@@ -83,10 +83,13 @@ To ensure frame-accurate synchronization without real-time playback bottlenecks,
 ### 2. Procedural Geometry & Continuous Voxelization
 Rather than generating a traditional rigid voxel lattice, `abstract-flight` implements continuous smooth-to-voxel morphing:
 
-- **Vertex Quantization**: Vertices smoothly interpolate between continuous height fields and discrete step lattices using continuous vector snapping:
-  $$\vec{p}_{\text{snapped}} = \text{round}\left(\frac{\vec{p}}{s}\right) \cdot s$$
-  $$\vec{p}_{\text{out}} = (1 - \alpha) \cdot \vec{p} + \alpha \cdot \vec{p}_{\text{snapped}}$$
-  where $\alpha \in [0, 1]$ is dynamically driven by the instantaneous audio band envelope.
+- **Vertex Quantization**: Vertices smoothly interpolate between continuous height fields and discrete step lattices using continuous vector snapping where $\alpha \in [0, 1]$ is dynamically driven by the instantaneous audio band envelope.:
+
+$$\vec{p}_{\text{snapped}} = \text{round}\left(\frac{\vec{p}}{s}\right) \cdot s$$
+
+$$\vec{p}_{\text{out}} = (1 - \alpha) \cdot \vec{p} + \alpha \cdot \vec{p}_{\text{snapped}}$$
+  
+  
 - **Instanced Column Generation**: For higher voxelization thresholds, point grids instance 3D cubic columns whose heights match the snapped terrain height, seamlessly combining smooth terrain with stepped voxel monoliths.
 - **Flight Corridor**: The terrain height field carves out an analytic meandering valley defined by:
   $$x_{\text{center}}(y) = A \cdot \sin(f \cdot y + \phi)$$
@@ -111,8 +114,10 @@ This abstraction allows declarative composition of multi-octave noise, coordinat
 ### 4. Dynamic Camera Kinematics
 The camera motion mimics an acrobatic drone pilot responding to the music:
 - **Velocity Coupling**: Base forward velocity scales proportionally with instantaneous bass energy:
+
   $$v(t) = v_{\text{base}} \cdot \left(0.6 + k_{\text{bass}} \cdot E_{\text{bass}}(t) + 0.3 \cdot E_{\text{loud}}(t)\right)$$
-- **Adaptive Banking & Yaw**: Camera yaw aligns with the tangent of the meander curve ($\arctan(-\nabla x)$), while roll (banking) is derived from the second derivative (curvature) to lean naturally into turns.
+  
+- **Adaptive Banking & Yaw**: Camera yaw aligns with the tangent of the meander curve ($$\arctan(-\nabla x)$$), while roll (banking) is derived from the second derivative (curvature) to lean naturally into turns.
 - **Focal Breathing**: The camera lens dynamically shifts between wide-angle ($22\text{ mm}$) and ultra-wide ($14\text{ mm}$) based on RMS loudness, exaggerating depth and speed on drop sections.
 
 ---
