@@ -19,7 +19,7 @@ def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--audio", required=True)
     p.add_argument("--seed", type=int, default=1)
-    p.add_argument("--out", default="abstract_flight.mp4")
+    p.add_argument("--out", default="render/abstract_flight.mp4")
     p.add_argument("--fps", type=int, default=30)
     p.add_argument("--res", default="1920x1080")
     p.add_argument("--samples", type=int, default=32)
@@ -796,11 +796,13 @@ def main():
     print("[abstract flight] frames:", feats["n"], "beats:", int((feats["beat"] > 0.99).sum()))
     scene = build_scene(args, feats, P)
     if args.save_blend:
+        os.makedirs(os.path.dirname(os.path.abspath(args.save_blend)), exist_ok=True)
         bpy.ops.wm.save_as_mainfile(filepath=os.path.abspath(args.save_blend))
     if args.no_render:
         return
     r = scene.render
     out = os.path.abspath(args.out)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
     if args.still is not None:
         scene.frame_set(args.still)
         try:
