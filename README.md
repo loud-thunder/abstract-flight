@@ -201,15 +201,6 @@ All options are passed after `--` in the Blender invocation:
 
 ---
 
-## Extensibility & Roadmap
-
-- [ ] **Multi-Stem DSP Ingestion**: Support separated stems (drums, bass, vocals, synth) via Demucs/Spleeter to drive distinct geometry channels independently.
-- [ ] **MIDI Integration**: Parse MIDI files directly into discrete trigger events for keyframed geometric eruptions.
-- [ ] **Raytraced Path Modes**: Preset configuration switch for Cycles rendering with volumetric mist and emissive caustics.
-- [ ] **Interactive Web Player**: Export baked geometry and audio streams to three.js / WebGL for in-browser procedural exploration.
-
----
-
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
