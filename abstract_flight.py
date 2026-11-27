@@ -10,13 +10,15 @@ import sys, os, math, random, colorsys, subprocess, argparse
 import bpy
 import numpy as np
 
+__version__ = "1.0.0"
 SCENE_NAME = "abstract flight"
 
 
 # ----------------------------------------------------------------------------- args
 def parse_args():
     argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
-    p = argparse.ArgumentParser()
+    p = argparse.ArgumentParser(prog="abstract_flight")
+    p.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     p.add_argument("--audio", required=True)
     p.add_argument("--seed", type=int, default=1)
     p.add_argument("--out", default="render/abstract_flight.mp4")

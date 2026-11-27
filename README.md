@@ -1,5 +1,6 @@
 # abstract-flight
 
+[![Release](https://img.shields.io/github/v/release/loud-thunder/abstract-flight)](https://github.com/loud-thunder/abstract-flight/releases)
 [![Blender](https://img.shields.io/badge/Blender-4.x%20%7C%20EEVEE-F5792A?logo=blender&logoColor=white)](https://www.blender.org/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![NumPy](https://img.shields.io/badge/DSP-NumPy%20FFT-013243?logo=numpy&logoColor=white)](https://numpy.org/)
